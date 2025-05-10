@@ -1,19 +1,54 @@
 import Bank.BankAccount;
 import Exeptions.InsufficientBalanceException;
 import MathLib.Operations;
+import models.Person;
 
 public class Main {
     public static void main(String[] args) {
-        //using imported package Library MathLib.Operations
-        System.out.println(Operations.add(2, 4));
+//        importedPackageStuff();
+//        exceptionStuff();
+//        genericsStuff();
+    }
 
-        Main.level1();
+    private static void genericsStuff() {
+        String[] strings = {"shikha", "rohini", "suman"};
+        Integer[] numbers = {1,2,3,4};
+        Person[] people={new Person("Shikha",21),new Person("Rohini",19)};
 
-        exceptionStuff();
+        printAll(numbers);
+        printAll(strings);
+        printAll(people);
+
+        System.out.println("============ before echo ============");
+        String s = echo("Hello Java");
+        Integer i = echo(2);
+        System.out.println("============ after echo ============");
+        System.out.println(s);
+        System.out.println(i);
+    }
+
+    private static <T> T echo(T element) {
+        System.out.println(element);
+        return element;
+    }
+
+    private static <T> void printAll(T[] elements) {
+        for(T element: elements) {
+            System.out.println(element.toString());
+        }
+    }
+
+    private static void importedPackageStuff() {
+        int a = 2;
+        int b = 3;
+        System.out.printf("%d + %d = %d", a, b, Operations.add(a, b));
     }
 
     private static void exceptionStuff() {
-        BankAccount bankAccount = new BankAccount(2000);
+        Main.level1();
+
+        BankAccount bankAccount = new BankAccount(2000); //custom exception class
+
         try {
             bankAccount.withdraw(5000);
         } catch (InsufficientBalanceException e) {
