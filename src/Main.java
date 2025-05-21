@@ -2,18 +2,33 @@ import Bank.BankAccount;
 import Exeptions.InsufficientBalanceException;
 import MathLib.Operations;
 import models.Person;
+import network.HttpResponseCode;
 
 public class Main {
     public static void main(String[] args) {
 //        importedPackageStuff();
 //        exceptionStuff();
 //        genericsStuff();
+//        enumStuff();
+    }
+
+    private static void enumStuff() {
+        HttpResponseCode ok = HttpResponseCode.OK;
+        HttpResponseCode error = HttpResponseCode.ERROR;
+        int okCode = ok.getCode();
+        String okMsg = ok.getMsg();
+        int errorCode = error.getCode();
+        String errorMsg = error.getMsg();
+        System.out.println(okCode);
+        System.out.println(errorCode);
+        System.out.println(okMsg);
+        System.out.println(errorMsg);
     }
 
     private static void genericsStuff() {
         String[] strings = {"shikha", "rohini", "suman"};
-        Integer[] numbers = {1,2,3,4};
-        Person[] people={new Person("Shikha",21),new Person("Rohini",19)};
+        Integer[] numbers = {1, 2, 3, 4};
+        Person[] people = {new Person("Shikha", 21), new Person("Rohini", 19)};
 
         printAll(numbers);
         printAll(strings);
@@ -33,7 +48,7 @@ public class Main {
     }
 
     private static <T> void printAll(T[] elements) {
-        for(T element: elements) {
+        for (T element : elements) {
             System.out.println(element.toString());
         }
     }
